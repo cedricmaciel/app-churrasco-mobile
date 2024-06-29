@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Image, ScrollView } from 'react-native';
 
 export default function App() {
   const [homens, setHomens] = useState(0);
@@ -12,75 +12,124 @@ export default function App() {
   const [cerveja, setCerveja] = useState(0);
 
   const calcular = () => {
-    
     const totalCarneBovina = homens * 0.3 + mulheres * 0.2 + criancas * 0.1;
     const totalFrango = homens * 0.2 + mulheres * 0.15 + criancas * 0.1;
     const totalLinguica = homens * 0.1 + mulheres * 0.1 + criancas * 0.05;
     const totalRefrigerante = (homens + mulheres + criancas) * 0.5;
     const totalCerveja = homens * 0.5 + mulheres * 0.3;
 
-    setCarneBovina(totalCarneBovina.toFixed(2));
-    setFrango(totalFrango.toFixed(2));
-    setLinguica(totalLinguica.toFixed(2));
-    setRefrigerante(totalRefrigerante.toFixed(2));
-    setCerveja(totalCerveja.toFixed(2));
+    setCarneBovina(totalCarneBovina.toFixed(3));
+    setFrango(totalFrango.toFixed(3));
+    setLinguica(totalLinguica.toFixed(3));
+    setRefrigerante(totalRefrigerante.toFixed(3));
+    setCerveja(totalCerveja.toFixed(3));
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Calculadora de Churrasco</Text>
-      <View style={styles.inputPessoa}>
-        <Text>Homens:</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType="numeric"
-          value={homens.toString()}
-          onChangeText={(text) => setHomens(parseInt(text))}
+    <View style={styles.outerContainer}>
+      <View style={styles.borderTop} />
+      <View style={styles.borderBottom} />
+      <View style={styles.borderLeft} />
+      <View style={styles.borderRight} />
+      <ScrollView contentContainerStyle={styles.container}>
+        <Image
+          source={require('./assets/logos/logo1teste.png')}
+          style={styles.logo}
         />
-      </View>
-      <View style={styles.inputPessoa}>
-        <Text>Mulheres:</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType="numeric"
-          value={mulheres.toString()}
-          onChangeText={(text) => setMulheres(parseInt(text))}
-        />
-      </View>
-      <View style={styles.inputPessoa}>
-        <Text>Crianças:</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType="numeric"
-          value={criancas.toString()}
-          onChangeText={(text) => setCriancas(parseInt(text))}
-        />
-      </View>
-      <Button title="Calcular" onPress={calcular} />
-
-      <View style={styles.resultado}>
-        <Text style={styles.subtitle}>Quantidade de itens a serem comprados:</Text>
-        <Text>{carneBovina} Kg de Carne Bovina</Text>
-        <Text>{frango} Kg de Frango</Text>
-        <Text>{linguica} Kg de Linguiça</Text>
-        <Text>{refrigerante} L de Refrigerante</Text>
-        <Text>{cerveja} L de Cerveja</Text>
-      </View>
+        <Text style={styles.title}>Calcule seu Churrasco</Text>
+        <View style={styles.inputPessoa}>
+          <Text style={styles.textonome}>Homens:</Text>
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            value={homens.toString()}
+            onChangeText={(text) => setHomens(parseInt(text))}
+          />
+        </View>
+        <View style={styles.inputPessoa}>
+          <Text style={styles.textonome}>Mulheres:</Text>
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            value={mulheres.toString()}
+            onChangeText={(text) => setMulheres(parseInt(text))}
+          />
+        </View>
+        <View style={styles.inputPessoa}>
+          <Text style={styles.textonome}>Crianças:</Text>
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            value={criancas.toString()}
+            onChangeText={(text) => setCriancas(parseInt(text))}
+          />
+        </View>
+        <Button title="Calcular" onPress={calcular} />
+        <View style={styles.resultado}>
+          <Text style={styles.subtitle}>Quantidade necessária:</Text>
+          <Text style={styles.textos}>{carneBovina} Kg de Carne Bovina</Text>
+          <Text style={styles.textos}>{frango} Kg de Frango</Text>
+          <Text style={styles.textos}>{linguica} Kg de Linguiça</Text>
+          <Text style={styles.textos}>{refrigerante} L de Refrigerante</Text>
+          <Text style={styles.textos}>{cerveja} L de Cerveja</Text>
+        </View>
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  outerContainer: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#C61010',
+  },
+  borderTop: {
+    position: 'absolute',
+    top: 22,
+    left: 0,
+    right: 0,
+    height: 10,
+    backgroundColor: 'white',
+  },
+  borderBottom: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 10,
+    backgroundColor: 'white',
+  },
+  borderLeft: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    width: 10,
+    backgroundColor: 'white',
+  },
+  borderRight: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    width: 10,
+    backgroundColor: 'white',
+  },
+  container: {
     alignItems: 'center',
-    padding: 20,
-    backgroundColor: 'red',
+    paddingTop: 70, // ajuste este valor conforme necessário para a distância do topo
+    paddingBottom: 70, // ajuste este valor conforme necessário para a distância do fundo
+  },
+  logo: {
+    width: 200, // ajuste conforme necessário
+    height: 200, // ajuste conforme necessário
+    marginTop: -20, // ajuste negativo para mover o logo para cima
   },
   title: {
+    color: 'white',
     fontSize: 24,
     fontWeight: 'bold',
+    marginTop: 40,
     marginBottom: 20,
   },
   inputPessoa: {
@@ -88,20 +137,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
   },
+  textonome: {
+    fontSize: 20,
+    color: 'white',
+  },
   input: {
     backgroundColor: 'white',
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 8,
     flex: 1,
-    marginLeft: 10,
+    marginLeft: 15,
   },
   resultado: {
     marginTop: 20,
   },
   subtitle: {
+    color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+  },
+  textos: {
+    color: 'white',
   },
 });
