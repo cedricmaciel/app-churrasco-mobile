@@ -87,11 +87,12 @@ const styles = StyleSheet.create({
   },
   borderTop: {
     position: 'absolute',
-    top: 22,
+    top: 0,
     left: 0,
     right: 0,
     height: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#D0905B',
+    zIndex: 1,
   },
   borderBottom: {
     position: 'absolute',
@@ -99,7 +100,8 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#D0905B',
+    zIndex: 1,
   },
   borderLeft: {
     position: 'absolute',
@@ -107,7 +109,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#623C1D',
+    zIndex: 1,
   },
   borderRight: {
     position: 'absolute',
@@ -115,7 +118,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     width: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#623C1D',
+    zIndex: 1,
   },
   container: {
     alignItems: 'center',
@@ -146,8 +150,8 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: '#ccc',
+    borderWidth: 5,
+    borderColor: '#D0905B',
     padding: 8,
     marginLeft: 15,
   },
@@ -155,6 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3383F4',
     padding: 10,
     borderRadius: 5,
+  
     marginTop: 10,
   },
   buttonText: {
