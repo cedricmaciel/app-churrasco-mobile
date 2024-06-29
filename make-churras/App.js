@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
 
 export default function App() {
   const [homens, setHomens] = useState(0);
@@ -64,7 +64,9 @@ export default function App() {
             onChangeText={(text) => setCriancas(parseInt(text))}
           />
         </View>
-        <Button title="Calcular" onPress={calcular} />
+        <TouchableOpacity style={styles.customButton} onPress={calcular}>
+          <Text style={styles.buttonText}>Calcular</Text>
+        </TouchableOpacity>
         <View style={styles.resultado}>
           <Text style={styles.subtitle}>Quantidade necessária:</Text>
           <Text style={styles.textos}>{carneBovina} Kg de Carne Bovina</Text>
@@ -133,6 +135,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   inputPessoa: {
+    marginRight: 200,
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
@@ -146,8 +149,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 8,
-    flex: 1,
     marginLeft: 15,
+  },
+  customButton: {
+    backgroundColor: '#3383F4',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   resultado: {
     marginTop: 20,
@@ -156,7 +170,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 20,
   },
   textos: {
     color: 'white',
