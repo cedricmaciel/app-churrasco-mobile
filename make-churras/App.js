@@ -1,52 +1,72 @@
-// App.js
-
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
 export default function App() {
   const [homens, setHomens] = useState(0);
   const [mulheres, setMulheres] = useState(0);
   const [criancas, setCriancas] = useState(0);
+  const [carneBovina, setCarneBovina] = useState(0);
+  const [frango, setFrango] = useState(0);
+  const [linguica, setLinguica] = useState(0);
+  const [refrigerante, setRefrigerante] = useState(0);
+  const [cerveja, setCerveja] = useState(0);
 
   const calcular = () => {
-    const carneBovina = (homens * 0.5) + (mulheres * 0.3) + (criancas * 0.2);
-    const frango = (homens * 0.2) + (mulheres * 0.2) + (criancas * 0.1);
-    const linguica = (homens * 0.2) + (mulheres * 0.2) + (criancas * 0.2);
-    const refrigerante = (homens * 0.3) + (mulheres * 0.4) + (criancas * 0.2);
-    const cerveja = (homens * 0.8) + (mulheres * 0.5);
+    // Lógica de cálculo aqui
+    // Exemplo simples para ilustrar
+    const totalCarneBovina = homens * 0.3 + mulheres * 0.2 + criancas * 0.1;
+    const totalFrango = homens * 0.2 + mulheres * 0.15 + criancas * 0.1;
+    const totalLinguica = homens * 0.1 + mulheres * 0.1 + criancas * 0.05;
+    const totalRefrigerante = (homens + mulheres + criancas) * 0.5;
+    const totalCerveja = homens * 0.5 + mulheres * 0.3;
 
-    // Atualiza os resultados
+    setCarneBovina(totalCarneBovina.toFixed(2));
+    setFrango(totalFrango.toFixed(2));
+    setLinguica(totalLinguica.toFixed(2));
+    setRefrigerante(totalRefrigerante.toFixed(2));
+    setCerveja(totalCerveja.toFixed(2));
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Calculadora de Churrasco</Text>
-      <View style={styles.inputContainer}>
+      <Text style={styles.title}>Calculadora de Churrasco</Text>
+      <View style={styles.inputPessoa}>
+        <Text>Homens:</Text>
         <TextInput
           style={styles.input}
-          placeholder="Homens"
           keyboardType="numeric"
-          onChangeText={value => setHomens(parseInt(value))}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Mulheres"
-          keyboardType="numeric"
-          onChangeText={value => setMulheres(parseInt(value))}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Crianças"
-          keyboardType="numeric"
-          onChangeText={value => setCriancas(parseInt(value))}
+          value={homens.toString()}
+          onChangeText={(text) => setHomens(parseInt(text))}
         />
       </View>
-      <TouchableOpacity style={styles.button} onPress={calcular}>
-        <Text style={styles.buttonText}>Calcular</Text>
-      </TouchableOpacity>
-      <ScrollView style={styles.resultContainer}>
-        {/* Resultados aqui */}
-      </ScrollView>
+      <View style={styles.inputPessoa}>
+        <Text>Mulheres:</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          value={mulheres.toString()}
+          onChangeText={(text) => setMulheres(parseInt(text))}
+        />
+      </View>
+      <View style={styles.inputPessoa}>
+        <Text>Crianças:</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          value={criancas.toString()}
+          onChangeText={(text) => setCriancas(parseInt(text))}
+        />
+      </View>
+      <Button title="Calcular" onPress={calcular} />
+
+      <View style={styles.resultado}>
+        <Text style={styles.subtitle}>Quantidade de itens a serem comprados:</Text>
+        <Text>{carneBovina} Kg de Carne Bovina</Text>
+        <Text>{frango} Kg de Frango</Text>
+        <Text>{linguica} Kg de Linguiça</Text>
+        <Text>{refrigerante} L de Refrigerante</Text>
+        <Text>{cerveja} L de Cerveja</Text>
+      </View>
     </View>
   );
 }
@@ -56,40 +76,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f4f4f4',
     padding: 20,
   },
-  titulo: {
-    fontSize: 28,
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
     marginBottom: 20,
   },
-  inputContainer: {
-    marginBottom: 15,
-    width: '100%',
+  inputPessoa: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
   },
   input: {
-    height: 40,
-    borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 10,
+    borderColor: '#ccc',
+    padding: 8,
+    flex: 1,
+    marginLeft: 10,
   },
-  button: {
-    backgroundColor: '#007BFF',
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    marginBottom: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  resultContainer: {
-    width: '100%',
+  resultado: {
     marginTop: 20,
-    paddingHorizontal: 10,
+  },
+  subtitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
 });
