@@ -12,8 +12,7 @@ export default function App() {
   const [cerveja, setCerveja] = useState(0);
 
   const calcular = () => {
-    // Lógica de cálculo aqui
-    // Exemplo simples para ilustrar
+    
     const totalCarneBovina = homens * 0.3 + mulheres * 0.2 + criancas * 0.1;
     const totalFrango = homens * 0.2 + mulheres * 0.15 + criancas * 0.1;
     const totalLinguica = homens * 0.1 + mulheres * 0.1 + criancas * 0.05;
