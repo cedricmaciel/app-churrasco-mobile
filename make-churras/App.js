@@ -25,6 +25,15 @@ export default function App() {
     setCerveja(totalCerveja.toFixed(1));
   };
 
+  const handleInput = (setter) => (text) => {
+    const value = parseInt(text);
+    if (!isNaN(value) && value >= 0) {
+      setter(value);
+    } else {
+      setter(0);
+    }
+  };
+
   return (
     <View style={styles.outerContainer}>
       <View style={styles.borderTop} />
@@ -43,7 +52,7 @@ export default function App() {
             style={styles.input}
             keyboardType="numeric"
             value={homens.toString()}
-            onChangeText={(text) => setHomens(parseInt(text))}
+            onChangeText={handleInput(setHomens)}
           />
         </View>
         <View style={styles.inputPessoa}>
@@ -52,7 +61,7 @@ export default function App() {
             style={styles.input}
             keyboardType="numeric"
             value={mulheres.toString()}
-            onChangeText={(text) => setMulheres(parseInt(text))}
+            onChangeText={handleInput(setMulheres)}
           />
         </View>
         <View style={styles.inputPessoa}>
@@ -61,19 +70,22 @@ export default function App() {
             style={styles.input}
             keyboardType="numeric"
             value={criancas.toString()}
-            onChangeText={(text) => setCriancas(parseInt(text))}
+            onChangeText={handleInput(setCriancas)}
           />
         </View>
         <TouchableOpacity style={styles.customButton} onPress={calcular}>
           <Text style={styles.buttonText}>Calcular</Text>
         </TouchableOpacity>
         <View style={styles.resultado}>
+         
           <Text style={styles.subtitle}>Quantidade necessária:</Text>
+          <View style={styles.borda}>
           <Text style={styles.textos}>{carneBovina} Kg de Carne Bovina</Text>
           <Text style={styles.textos}>{frango} Kg de Frango</Text>
           <Text style={styles.textos}>{linguica} Kg de Linguiça</Text>
           <Text style={styles.textos}>{refrigerante} L de Refrigerante</Text>
           <Text style={styles.textos}>{cerveja} L de Cerveja</Text>
+        </View>
         </View>
       </ScrollView>
     </View>
@@ -159,7 +171,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#3383F4',
     padding: 10,
     borderRadius: 5,
-  
     marginTop: 10,
   },
   buttonText: {
@@ -176,8 +187,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 20,
+    
   },
   textos: {
     color: 'white',
+    backgroundColor: '#D0905B',
+    
+  },
+
+  borda: {
+    borderColor: 'white',
+    borderWidth: 5,
+
   },
 });
