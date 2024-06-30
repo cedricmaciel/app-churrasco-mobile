@@ -34,6 +34,16 @@ export default function App() {
     }
   };
 
+  const increment = (setter, value) => () => {
+    setter(value + 1);
+  };
+
+  const decrement = (setter, value) => () => {
+    if (value > 0) {
+      setter(value - 1);
+    }
+  };
+
   return (
     <View style={styles.outerContainer}>
       <View style={styles.borderTop} />
@@ -46,46 +56,68 @@ export default function App() {
           style={styles.logo}
         />
         <Text style={styles.title}>Calcule seu Churrasco</Text>
+        
         <View style={styles.inputPessoa}>
           <Text style={styles.textonome}>Homens:</Text>
+          <TouchableOpacity style={styles.button} onPress={decrement(setHomens, homens)}>
+            <Text style={styles.buttonText}>-</Text>
+          </TouchableOpacity>
           <TextInput
             style={styles.input}
             keyboardType="numeric"
             value={homens.toString()}
             onChangeText={handleInput(setHomens)}
           />
+          <TouchableOpacity style={styles.button} onPress={increment(setHomens, homens)}>
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
         </View>
+        
         <View style={styles.inputPessoa}>
           <Text style={styles.textonome}>Mulheres:</Text>
+          <TouchableOpacity style={styles.button} onPress={decrement(setMulheres, mulheres)}>
+            <Text style={styles.buttonText}>-</Text>
+          </TouchableOpacity>
           <TextInput
             style={styles.input}
             keyboardType="numeric"
             value={mulheres.toString()}
             onChangeText={handleInput(setMulheres)}
           />
+          <TouchableOpacity style={styles.button} onPress={increment(setMulheres, mulheres)}>
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
         </View>
+        
         <View style={styles.inputPessoa}>
           <Text style={styles.textonome}>Crianças:</Text>
+          <TouchableOpacity style={styles.button} onPress={decrement(setCriancas, criancas)}>
+            <Text style={styles.buttonText}>-</Text>
+          </TouchableOpacity>
           <TextInput
             style={styles.input}
             keyboardType="numeric"
             value={criancas.toString()}
             onChangeText={handleInput(setCriancas)}
           />
+          <TouchableOpacity style={styles.button} onPress={increment(setCriancas, criancas)}>
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
         </View>
+      
         <TouchableOpacity style={styles.customButton} onPress={calcular}>
-          <Text style={styles.buttonText}>Calcular</Text>
+          <Text style={styles.customButtonText}>Calcular</Text>
         </TouchableOpacity>
+        
         <View style={styles.resultado}>
-         
           <Text style={styles.subtitle}>Quantidade necessária:</Text>
           <View style={styles.borda}>
-          <Text style={styles.textos}>{carneBovina} Kg de Carne Bovina</Text>
-          <Text style={styles.textos}>{frango} Kg de Frango</Text>
-          <Text style={styles.textos}>{linguica} Kg de Linguiça</Text>
-          <Text style={styles.textos}>{refrigerante} L de Refrigerante</Text>
-          <Text style={styles.textos}>{cerveja} L de Cerveja</Text>
-        </View>
+            <Text style={styles.textos}>{carneBovina} Kg de Carne Bovina</Text>
+            <Text style={styles.textos}>{frango} Kg de Frango</Text>
+            <Text style={styles.textos}>{linguica} Kg de Linguiça</Text>
+            <Text style={styles.textos}>{refrigerante} L de Refrigerante</Text>
+            <Text style={styles.textos}>{cerveja} L de Cerveja</Text>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -151,7 +183,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   inputPessoa: {
-    marginRight: 200,
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
@@ -165,7 +196,20 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: '#D0905B',
     padding: 8,
-    marginLeft: 15,
+    marginHorizontal: 5,
+    width: 50,
+    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#3383F4',
+    padding: 10,
+    borderRadius: 5,
+    marginHorizontal: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   customButton: {
     backgroundColor: '#3383F4',
@@ -173,7 +217,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
   },
-  buttonText: {
+  customButtonText: {
     color: 'white',
     textAlign: 'center',
     fontSize: 18,
@@ -187,17 +231,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 20,
-    
   },
   textos: {
     color: 'white',
-    backgroundColor: '#D0905B',
     
   },
-
   borda: {
     borderColor: 'white',
     borderWidth: 5,
-
+    width: 250,
+    backgroundColor: '#D0905B',
+    height: 150,
   },
 });
