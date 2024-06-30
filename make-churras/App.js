@@ -16,7 +16,7 @@ export default function App() {
     const totalFrango = homens * 0.2 + mulheres * 0.15 + criancas * 0.1;
     const totalLinguica = homens * 0.1 + mulheres * 0.1 + criancas * 0.05;
     const totalRefrigerante = (homens + mulheres + criancas) * 0.5;
-    const totalCerveja = homens * 1 + mulheres * 0.6;
+    const totalCerveja = homens * 1.2 + mulheres * 0.6;
 
     setCarneBovina(totalCarneBovina.toFixed(1));
     setFrango(totalFrango.toFixed(1));
