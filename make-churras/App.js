@@ -16,13 +16,13 @@ export default function App() {
     const totalFrango = homens * 0.2 + mulheres * 0.15 + criancas * 0.1;
     const totalLinguica = homens * 0.1 + mulheres * 0.1 + criancas * 0.05;
     const totalRefrigerante = (homens + mulheres + criancas) * 0.5;
-    const totalCerveja = homens * 0.5 + mulheres * 0.3;
+    const totalCerveja = homens * 1 + mulheres * 0.6;
 
-    setCarneBovina(totalCarneBovina.toFixed(3));
-    setFrango(totalFrango.toFixed(3));
-    setLinguica(totalLinguica.toFixed(3));
-    setRefrigerante(totalRefrigerante.toFixed(3));
-    setCerveja(totalCerveja.toFixed(3));
+    setCarneBovina(totalCarneBovina.toFixed(1));
+    setFrango(totalFrango.toFixed(1));
+    setLinguica(totalLinguica.toFixed(1));
+    setRefrigerante(totalRefrigerante.toFixed(1));
+    setCerveja(totalCerveja.toFixed(1));
   };
 
   return (
