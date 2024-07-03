@@ -109,11 +109,11 @@ export default function App() {
         <View>
             <Text>Quem não bebe</Text>
             <TouchableOpacity style={styles.button}>
-              <Text>+</Text>
+            <Text style={styles.buttonText}>+</Text>
             </TouchableOpacity>
             <TextInput style={styles.input}></TextInput>
             <TouchableOpacity style={styles.button}>
-            <Text>-</Text>
+            <Text style={styles.buttonText}>-</Text>
             </TouchableOpacity>
             
 
