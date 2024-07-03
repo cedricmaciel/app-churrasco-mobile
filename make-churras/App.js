@@ -108,7 +108,7 @@ export default function App() {
             <Text style={styles.buttonText}>+</Text>
           </TouchableOpacity>
         </View>
-        
+         
         <View>
             <Text>Quem não bebe</Text>
               <TouchableOpacity style={styles.button}>
