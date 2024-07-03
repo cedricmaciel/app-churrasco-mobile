@@ -114,7 +114,11 @@ export default function App() {
               <TouchableOpacity style={styles.button}>
                <Text style={styles.buttonText} onPress={increment(setHnaobebe, hnaobebe)}>+</Text>
               </TouchableOpacity>
-             <TextInput style={styles.input}></TextInput>
+             <TextInput 
+              style={styles.input}
+              keyboardType="numeric"
+              value={hnaobebe.toString()}
+              onChangeText={handleInput(setHnaobebe)}></TextInput>
                 <TouchableOpacity style={styles.button}>
                    <Text style={styles.buttonText} onPress={decrement(setHnaobebe, hnaobebe)}>-</Text>
                </TouchableOpacity>
@@ -123,7 +127,11 @@ export default function App() {
             <TouchableOpacity style={styles.button}>
                <Text style={styles.buttonText} onPress={increment(setMnaobebe, mnaobebe)}>+</Text>
               </TouchableOpacity>
-             <TextInput style={styles.input}></TextInput>
+             <TextInput style={styles.input}
+              keyboardType="numeric"
+              value={mnaobebe.toString()}
+              onChangeText={handleInput(setMnaobebe)}
+              ></TextInput>
                 <TouchableOpacity style={styles.button}>
                    <Text style={styles.buttonText} onPress={decrement(setMnaobebe, mnaobebe)}>-</Text>
                </TouchableOpacity>
