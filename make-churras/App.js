@@ -71,6 +71,7 @@ export default function App() {
           <TouchableOpacity style={styles.button} onPress={increment(setHomens, homens)}>
             <Text style={styles.buttonText}>+</Text>
           </TouchableOpacity>
+
         </View>
         
         <View style={styles.inputPessoa}>
@@ -104,6 +105,20 @@ export default function App() {
             <Text style={styles.buttonText}>+</Text>
           </TouchableOpacity>
         </View>
+        
+        <View>
+            <Text>Quem não bebe</Text>
+            <TouchableOpacity style={styles.button}>
+              <Text>+</Text>
+            </TouchableOpacity>
+            <TextInput style={styles.input}></TextInput>
+            <TouchableOpacity style={styles.button}>
+            <Text>-</Text>
+            </TouchableOpacity>
+            
+
+          </View>
+
       
         <TouchableOpacity style={styles.customButton} onPress={calcular}>
           <Text style={styles.customButtonText}>Calcular</Text>
