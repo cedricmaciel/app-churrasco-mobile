@@ -10,13 +10,16 @@ export default function App() {
   const [linguica, setLinguica] = useState(0);
   const [refrigerante, setRefrigerante] = useState(0);
   const [cerveja, setCerveja] = useState(0);
-
+  const [hnaobebe, setHnaobebe] = useState(0);
+  const [mnaobebe, setMnaobebe] = useState(0);
+ 
   const calcular = () => {
     const totalCarneBovina = homens * 0.3 + mulheres * 0.2 + criancas * 0.1;
     const totalFrango = homens * 0.2 + mulheres * 0.15 + criancas * 0.1;
     const totalLinguica = homens * 0.1 + mulheres * 0.1 + criancas * 0.05;
     const totalRefrigerante = (homens + mulheres + criancas) * 0.5;
-    const totalCerveja = homens * 1.2 + mulheres * 0.6;
+    const totalCerveja = homens * 1.2 + mulheres * 0.6 - hnaobebe * 1.2 - mnaobebe * 0.6;
+    
 
     setCarneBovina(totalCarneBovina.toFixed(1));
     setFrango(totalFrango.toFixed(1));
@@ -108,13 +111,13 @@ export default function App() {
         
         <View>
             <Text>Quem não bebe</Text>
-            <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>+</Text>
-            </TouchableOpacity>
-            <TextInput style={styles.input}></TextInput>
-            <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>-</Text>
-            </TouchableOpacity>
+              <TouchableOpacity style={styles.button}>
+               <Text style={styles.buttonText} onPress={increment(setHnaobebe, hnaobebe)}>+</Text>
+              </TouchableOpacity>
+             <TextInput style={styles.input}></TextInput>
+                <TouchableOpacity style={styles.button}>
+                   <Text style={styles.buttonText} onPress={decrement(setHnaobebe, hnaobebe)}>-</Text>
+               </TouchableOpacity>
             
 
           </View>
