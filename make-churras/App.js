@@ -118,7 +118,16 @@ export default function App() {
                 <TouchableOpacity style={styles.button}>
                    <Text style={styles.buttonText} onPress={decrement(setHnaobebe, hnaobebe)}>-</Text>
                </TouchableOpacity>
-            
+               
+            <View>
+            <TouchableOpacity style={styles.button}>
+               <Text style={styles.buttonText} onPress={increment(setHnaobebe, hnaobebe)}>+</Text>
+              </TouchableOpacity>
+             <TextInput style={styles.input}></TextInput>
+                <TouchableOpacity style={styles.button}>
+                   <Text style={styles.buttonText} onPress={decrement(setHnaobebe, hnaobebe)}>-</Text>
+               </TouchableOpacity>
+            </View>
 
           </View>
 
